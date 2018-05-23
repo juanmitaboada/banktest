@@ -1,0 +1,27 @@
+{% load staticfiles %}{% load i18n %}{% load bootstrap3 %}<!DOCTYPE html>
+
+<html lang="{{ LANGUAGE_CODE|default:"en" }}">
+<head>
+    <meta charset="utf-8">
+    <title>{% trans "Banktest: Test for bank system" %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Juanmi Taboada">
+
+    {# Load CSS libraries #}
+    {% bootstrap_css %}
+</head>
+<body>
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+    {% block body %}{% endblock %}
+
+    {# Load JS libraries #}
+    {% if DEBUG %}
+        <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+    {% else %}
+        <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    {% endif %}
+    {% bootstrap_javascript %}
+</body>
+</html>

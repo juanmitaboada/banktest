@@ -1,0 +1,5 @@
+ipython
+Django
+social-auth-app-django
+django-extensions
+django-bootstrap3
