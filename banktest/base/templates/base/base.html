@@ -1,5 +1,4 @@
 {% load staticfiles %}{% load i18n %}{% load bootstrap3 %}<!DOCTYPE html>
-
 <html lang="{{ LANGUAGE_CODE|default:"en" }}">
 <head>
     <meta charset="utf-8">
@@ -9,12 +8,17 @@
 
     {# Load CSS libraries #}
     {% bootstrap_css %}
+    {% block extra_css %}{% endblock %}
+
 </head>
 <body>
     {# Display django.contrib.messages as Bootstrap alerts #}
     {% bootstrap_messages %}
 
+    {# BODY %}
+    {% block prebody %}{% endblock %}
     {% block body %}{% endblock %}
+    {% block postbody %}{% endblock %}
 
     {# Load JS libraries #}
     {% if DEBUG %}
@@ -23,5 +27,6 @@
         <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     {% endif %}
     {% bootstrap_javascript %}
+    {% block extra_js %}{% endblock %}
 </body>
 </html>
