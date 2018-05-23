@@ -1,0 +1,20 @@
+<div>
+    <label>Username: <input #username></label>
+    <button (click)="add(username.value); username.value=''">add</button>
+</div>
+<ul class="users">
+    <li
+        *ngFor="let user of users"
+        [class.selected]="user === selectedUser">
+        <a routerLink="/detail/{{user.id}}">
+            <span class="badge">{{user.id}}</span>{{ user.username }}
+        </a>
+        <span class="badge_right">
+            <button
+                class="delete"
+                title="delete user"
+                (click)="delete(user)">x</button>
+        </span>
+    </li>
+</ul>
+<app-user-detail *ngIf="selectedUser" [user]="selectedUser"></app-user-detail>

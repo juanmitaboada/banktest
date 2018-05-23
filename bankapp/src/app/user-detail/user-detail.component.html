@@ -1,0 +1,50 @@
+<div *ngIf="user">
+
+  <h2>{{ user.username }} Details</h2>
+  <div><span>id: </span>{{user.id}}</div>
+  <div class="col-md-12">
+    <label>username:
+      <input [(ngModel)]="user.username" placeholder="username"/>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label>password:
+      <input type="password" [(ngModel)]="user.password" placeholder="password"/>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label>confirmation:
+      <input type="password" [(ngModel)]="user.confirmation" placeholder="confirmation"/>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label>email:
+      <input [(ngModel)]="user.email" placeholder="email"/>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label>First name:
+      <input [(ngModel)]="user.first_name" placeholder="firstname"/>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label>Last name:
+      <input [(ngModel)]="user.last_name" placeholder="lastname"/>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label>IBAN:
+      <input [(ngModel)]="user.iban" placeholder="iban"/>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <label>Is admin?:
+      <input type='checkbox' [(ngModel)]="user.isadmin" placeholder="isadmin"/>
+    </label>
+  </div>
+  <div class="col-md-12">
+    <button (click)="save()">save</button>
+  </div>
+
+</div>
+<button (click)="goBack()">go back</button>
