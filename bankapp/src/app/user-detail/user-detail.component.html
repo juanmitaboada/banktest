@@ -6,11 +6,16 @@
     <label>username:
       <input [(ngModel)]="user.username" placeholder="username"/>
     </label>
+    <span *ngIf="!user.username" style='color:red'> Username can not be empty</span>
   </div>
   <div class="col-md-12">
     <label>password:
       <input type="password" [(ngModel)]="user.password" placeholder="password"/>
     </label>
+    <span *ngIf="user.password">
+        <span *ngIf="user.password.length>=4 && user.password!=user.confirmation" style='color:red'> Passwords do not match</span>
+        <span *ngIf="user.password.length<4" style='color:red'> Passwords is too short!</span>
+    </span>
   </div>
   <div class="col-md-12">
     <label>confirmation:
@@ -34,12 +39,13 @@
   </div>
   <div class="col-md-12">
     <label>IBAN:
-      <input [(ngModel)]="user.iban" placeholder="iban"/>
+      <input [(ngModel)]="user.iban" ngxIban placeholder="iban"/>
     </label>
+    <span *ngIf="iban_error" style='color:red'> {{iban_error}}</span>
   </div>
   <div class="col-md-12">
-    <label>Is admin?:
-      <input type='checkbox' [(ngModel)]="user.isadmin" placeholder="isadmin"/>
+    <label>Is superuser?:
+      <input type='checkbox' [(ngModel)]="user.is_superuser" placeholder="is_superuser"/>
     </label>
   </div>
   <div class="col-md-12">

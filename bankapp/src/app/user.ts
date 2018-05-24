@@ -7,5 +7,5 @@ export class User {
     first_name: string;
     last_name: string;
     iban: string;
-    isadmin: boolean;
+    is_superuser: boolean;
 }
