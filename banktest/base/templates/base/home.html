@@ -1,5 +1,20 @@
 {% extends "base/env.html" %}
+{% load staticfiles %}
+
+{% block extra_head %}
+    <base href="/">
+    {{ block.super }}
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static "base/js/runtime.js" %}"></script>
+    <script type="text/javascript" src="{% static "base/js/polyfills.js" %}"></script>
+    <script type="text/javascript" src="{% static "base/js/styles.js" %}"></script>
+    <script type="text/javascript" src="{% static "base/js/vendor.js" %}"></script>
+    <script type="text/javascript" src="{% static "base/js/main.js" %}"></script></body>
+    {{ block.super }}
+{% endblock %}
 
 {% block body %}
-Helo world!
+    <app-root></app-root>
 {% endblock %}

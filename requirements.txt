@@ -3,3 +3,8 @@ Django
 social-auth-app-django
 django-extensions
 django-bootstrap3
+django-localflavor
+djangorestframework
+markdown
+django-filter
+django-cors-headers

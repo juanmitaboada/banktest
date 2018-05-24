@@ -5,6 +5,8 @@
     <title>{% trans "Banktest: Test for bank system" %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Juanmi Taboada">
+    <link rel="icon" type="image/x-icon" href="{% static "base/img/favicon.ico" %}">
+    {% block extra_head %}{% endblock %}
 
     {# Load CSS libraries #}
     {% bootstrap_css %}
@@ -15,7 +17,7 @@
     {# Display django.contrib.messages as Bootstrap alerts #}
     {% bootstrap_messages %}
 
-    {# BODY %}
+    {# BODY #}
     {% block prebody %}{% endblock %}
     {% block body %}{% endblock %}
     {% block postbody %}{% endblock %}

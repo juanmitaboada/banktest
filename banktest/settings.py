@@ -27,11 +27,16 @@ SECRET_KEY = 'dbkv%uig&_svg!2uh2dqyl&gd#lv)4c%*70k3+(1uo08^eo_#='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+# This will enable Django to be used by Angular Development Toolkit straight forward
+EXTERNAL_APP = False
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+]
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +48,8 @@ INSTALLED_APPS = [
     'social_django',
     'django_extensions',
     'bootstrap3',
+    'rest_framework',
+    'corsheaders',
 
     'banktest.base',
 ]
@@ -50,6 +57,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -173,3 +181,19 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
 )
+
+# Default permissions for API
+if not EXTERNAL_APP:
+    REST_FRAMEWORK = {
+        'DEFAULT_PERMISSION_CLASSES': (
+            'rest_framework.permissions.IsAuthenticated',
+        )
+    }
+
+if EXTERNAL_APP:
+    CORS_ORIGIN_WHITELIST = (
+        # 'google.com',
+        # 'hostname.example.com',
+        'localhost:4200',
+        '127.0.0.1:4200'
+    )

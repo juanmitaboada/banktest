@@ -16,7 +16,8 @@ const httpOptions = {
 export class UserService {
 
     // URL to user
-    private usersUrl = 'api/users';
+    private usersUrl = 'api/users/';
+    // private usersUrl = 'http://localhost:8000/api/users/';
 
     constructor(
         private http: HttpClient,
@@ -31,7 +32,7 @@ export class UserService {
     // Get an user
     getUser(id: number): Observable<User> {
         // Prepare variables
-        const url = `${this.usersUrl}/${id}`;
+        const url = `${this.usersUrl}${id}/`;
         this.messageService.add(`UserService: fetched user id=${id}`);
 
         // Send the request
@@ -62,8 +63,12 @@ export class UserService {
 
     // Update existing user
     updateUser(user: User): Observable<User> {
+        // Prepare variables
+        const id = typeof user === 'number' ? user: user.id;
+        const url = `${this.usersUrl}${id}/`;
+
         // Send the request
-        return this.http.put(this.usersUrl, user, httpOptions).pipe(    // Update -> PUT
+        return this.http.put(url, user, httpOptions).pipe(    // Update -> PUT
             tap(_ => this.log(`updated user id=${user.id}`)),           // LOG
             catchError(this.handleError<any>(`updateUser`))             // Catch errors
         );
@@ -73,7 +78,7 @@ export class UserService {
     deleteUser(user: User | number): Observable<User> {
         // Prepare variables
         const id = typeof user === 'number' ? user: user.id;
-        const url = `${this.usersUrl}/${id}`;
+        const url = `${this.usersUrl}${id}/`;
 
         // Send the request
         return this.http.delete(url, httpOptions).pipe(         // Delete -> DELETE
