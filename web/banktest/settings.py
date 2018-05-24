@@ -13,27 +13,47 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 VERSION = "1.0"
+PRODUCTION = False
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'dbkv%uig&_svg!2uh2dqyl&gd#lv)4c%*70k3+(1uo08^eo_#='
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-# This will enable Django to be used by Angular Development Toolkit straight forward
-EXTERNAL_APP = False
-
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-]
+if not PRODUCTION:
+    DEBUG = True
+    EXTERNAL_APP = False
+    ALLOWED_HOSTS = [
+        'localhost',
+        '127.0.0.1',
+    ]
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else:
+    DEBUG = False
+    EXTERNAL_APP = False
+    ALLOWED_HOSTS = [
+        'localhost',
+        '127.0.0.1',
+        'banktest.juanmitaboada.com',
+        'www.banktest.juanmitaboada.com',
+    ]
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'PASSWORD': 'password123',
+            'HOST': 'db',
+            'PORT': 5432,
+        }
+    }
 
 
 # Application definition
@@ -87,18 +107,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'banktest.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

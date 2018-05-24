@@ -8,3 +8,5 @@ djangorestframework
 markdown
 django-filter
 django-cors-headers
+uwsgi
+psycopg2-binary
