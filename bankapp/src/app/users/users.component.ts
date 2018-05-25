@@ -9,6 +9,8 @@ import { UserService } from '../user.service';
 })
 export class UsersComponent implements OnInit {
 
+    public selecteduser: User;
+
     // Declare structure holder
     users: User[];
 
