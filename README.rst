@@ -20,11 +20,15 @@ Intallation
 
     git clone https://github.com/juanmitaboada/banktest
 
-3. Launch docker-compose on the folder::
+3. Go into the folder::
+
+   cd banktest
+
+4. Launch docker-compose on the folder::
 
     docker-compose up
 
-4. Login to the website at http://127.0.0.1:8080 using username "demo" and password "demo"
+5. Login to the website at http://127.0.0.1:8080 using username "demo" and password "demo"
 
 
 ******

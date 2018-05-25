@@ -3,8 +3,7 @@ LABEL maintainer juanmitaboada
 ENV PYTHONUNBUFFERED 1
 
 # Install some necessary things.
-RUN apt-get update
-RUN apt-get install -y netcat
+# RUN apt-get update
 
 # Copy operational files to the image
 COPY entrypoint.sh /entrypoint.sh
