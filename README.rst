@@ -22,7 +22,7 @@ Intallation
 
 3. Go into the folder::
 
-   cd banktest
+    cd banktest
 
 4. Launch docker-compose on the folder::
 
